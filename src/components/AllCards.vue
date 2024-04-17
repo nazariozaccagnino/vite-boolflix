@@ -7,14 +7,14 @@
         </div>
         <div v-else class="row">
             <h3>Movies</h3>
-            <div class="col-3" v-for="(item,index) in this.store.searchResultMovie">
+            <div class="col-3 my-2" v-for="(item,index) in this.store.searchResultMovie">
                 <div class="card">
-                    <img src="..." class="card-img-top" alt="...">
+                    <img :src="this.store.imageUrl+item.poster_path" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{ item.title }}</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
+                        <p class="card-text">{{ item.original_title }}</p>
+                        <p class="card-text">{{ item.original_language }}</p>
+                        <p class="card-text">{{ item.vote_average }}</p>
                     </div>
                 </div>
             </div>
@@ -25,9 +25,9 @@
         </div>
         <div class="row" v-else>
             <h3>Series</h3>
-            <div class="col-3" v-for="(item,index) in this.store.searchResultTv">
+            <div class="col-3 my-2" v-for="(item,index) in this.store.searchResultTv">
                 <div class="card">
-                    <img src="..." class="card-img-top" alt="...">
+                    <img :src="this.store.imageUrl+item.poster_path" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{ item.name }}</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of
@@ -59,6 +59,10 @@ export default {
 
 <style lang="scss" scoped>
 .card {
-    border: 1px solid red;
+    padding: 5px;
+    height: 100%;
+    img{
+        height: 70%;
+    }
 }
 </style>

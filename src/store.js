@@ -12,7 +12,7 @@ export const store = reactive({
             query: 'bhjdsfgbjhds'
         }
     },
-    imageUrl: '',
+    imageUrl: 'https://image.tmdb.org/t/p/w300',
     searchResultMovie:[],
     searchResultTv:[],
     inputText:'',
