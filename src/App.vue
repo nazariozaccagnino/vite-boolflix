@@ -26,8 +26,8 @@ export default {
         // console.log(res.data.results);
         this.store.searchResultMovie = res.data.results
         console.log(this.store.searchResultMovie, '---Movies');
-        console.log(this.store.inputText);
       })
+      // this.store.inputText=null;
     },
     getTvSeries() {
       axios.get(this.store.apiUrl + this.store.endpoint.tv, this.store.options).then((res) => {
@@ -38,6 +38,7 @@ export default {
       })
     },
     searchInArrays(){
+      this.store.initialDisp = true;
       if(this.store.inputText !== ''){
         this.store.options.params.query = this.store.inputText
       }

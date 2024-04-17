@@ -16,5 +16,6 @@ export const store = reactive({
     searchResultMovie:[],
     searchResultTv:[],
     inputText:'',
+    initialDisp: false,
 
 });

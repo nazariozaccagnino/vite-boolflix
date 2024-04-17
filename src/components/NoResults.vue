@@ -1,17 +1,18 @@
 <template>
-    <div >
-        many cards
+    <div>
+        No results
     </div>
 </template>
 
 <script>
     export default {
-        name:'CardComponent'
+        name:'NoResults'
     }
 </script>
 
 <style lang="scss" scoped>
 div{
     border: 1px solid red;
+    color: white
 }
 </style>
