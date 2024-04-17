@@ -1,15 +1,19 @@
 <template>
-  <h1 class="text-center">Ciao</h1>
-  <i class="fa fa-solid fa-home"></i>
+  <HeaderComponent @startSearch="searchInArrays"/>
+  <MainComponent />
 </template>
 
 <script>
+import HeaderComponent from './components/HeaderComponent.vue'
+import MainComponent from './components/MainComponent.vue'
+
 import axios from 'axios'
 import { store } from './store.js'
 export default {
   name: 'App',
-  components:{
-
+  components: {
+    HeaderComponent,
+    MainComponent
   },
   data() {
     return {
@@ -22,6 +26,7 @@ export default {
         // console.log(res.data.results);
         this.store.searchResultMovie = res.data.results
         console.log(this.store.searchResultMovie, '---Movies');
+        console.log(this.store.inputText);
       })
     },
     getTvSeries() {
@@ -32,11 +37,16 @@ export default {
 
       })
     },
+    searchInArrays(){
+      if(this.store.inputText !== ''){
+        this.store.options.params.query = this.store.inputText
+      }
+      this.getMovies(),
+      this.getTvSeries()
+    }
   },
   created() {
-       this.getMovies(),
-       this.getTvSeries()
-
+      
   }
 }
 </script>

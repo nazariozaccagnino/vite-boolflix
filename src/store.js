@@ -9,11 +9,12 @@ export const store = reactive({
     options:{
         params:{
             api_key: '7c047038d4238bf09b7fa81c9071f166',
-            query: 'star wars'
+            query: 'bhjdsfgbjhds'
         }
     },
     imageUrl: '',
     searchResultMovie:[],
     searchResultTv:[],
+    inputText:'',
 
 });
