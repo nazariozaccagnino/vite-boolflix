@@ -32,7 +32,7 @@
                         <h5 class="card-title">{{ item.name }}</h5>
                         <p class="card-text">{{ item.original_name }}</p>
                         <p class="flag"><img :src="store.flagApi+item.original_language+'.png'" :alt="item.original_language"></p>
-                        <p class="card-text">{{ item.vote_average }}</p>
+                        <p class="card-text">{{item.vote_average}}</p>
                     </div>
                 </div>
             </div>
@@ -51,8 +51,17 @@ export default {
     },
     data() {
         return {
-            store
+            store,
         }
+    },
+    methods:{
+        convertRate(){
+            // this.store.vote = parseInt((this.store.searchResultMovie.vote_average) / 2),
+            // console.log(item.name);
+        }
+    },
+    created(){
+        this.convertRate()
     }
 }
 </script>

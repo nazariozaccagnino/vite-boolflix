@@ -17,6 +17,7 @@ export const store = reactive({
     searchResultTv:[],
     inputText:'',
     initialDisp: false,
-    flagApi: '/images/flags/'
+    flagApi: '/images/flags/',
+    vote: '',
 
 });
