@@ -9,11 +9,11 @@
             <h3>Movies</h3>
             <div class="col-3 my-2" v-for="(item,index) in this.store.searchResultMovie">
                 <div class="card">
-                    <img :src="this.store.imageUrl+item.poster_path" class="card-img-top" alt="...">
+                    <img :src="this.store.imageUrl+item.poster_path" class="card-img-top" :alt="item.title">
                     <div class="card-body">
                         <h5 class="card-title">{{ item.title }}</h5>
                         <p class="card-text">{{ item.original_title }}</p>
-                        <p class="card-text">{{ item.original_language }}</p>
+                        <p class="flag"><img :src="store.flagApi+item.original_language+'.png'" :alt="item.original_language"></p>
                         <p class="card-text">{{ item.vote_average }}</p>
                     </div>
                 </div>
@@ -27,12 +27,12 @@
             <h3>Series</h3>
             <div class="col-3 my-2" v-for="(item,index) in this.store.searchResultTv">
                 <div class="card">
-                    <img :src="this.store.imageUrl+item.poster_path" class="card-img-top" alt="...">
+                    <img :src="this.store.imageUrl+item.poster_path" class="card-img-top" :alt="item.name">
                     <div class="card-body">
                         <h5 class="card-title">{{ item.name }}</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
+                        <p class="card-text">{{ item.original_name }}</p>
+                        <p class="flag"><img :src="store.flagApi+item.original_language+'.png'" :alt="item.original_language"></p>
+                        <p class="card-text">{{ item.vote_average }}</p>
                     </div>
                 </div>
             </div>
@@ -62,7 +62,11 @@ export default {
     padding: 5px;
     height: 100%;
     img{
-        height: 70%;
+        height: 100%;
+    }
+    .flag img{
+        border: 1px solid black;
+        width: 30px;
     }
 }
 </style>
