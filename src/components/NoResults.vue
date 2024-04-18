@@ -1,6 +1,6 @@
 <template>
-    <div>
-        No results
+    <div class="text-center">
+        <h3>No results</h3>
     </div>
 </template>
 
@@ -12,7 +12,6 @@
 
 <style lang="scss" scoped>
 div{
-    border: 1px solid red;
     color: white
 }
 </style>

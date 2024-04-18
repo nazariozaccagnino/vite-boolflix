@@ -37,7 +37,22 @@ export default {
 
       })
     },
+    getTrendingMovies(){
+      axios.get(this.store.apiUrl + this.store.endpoint.trendingmovies, this.store.options).then((res) => {
+        this.store.trendingmovies = res.data.results
+        console.log(this.store.trendingmovies, '---Trendingmovies');
+
+    })
+    },
+    getTrendingTvs(){
+      axios.get(this.store.apiUrl + this.store.endpoint.trendingtvs, this.store.options).then((res) => {
+        this.store.trendingtvs = res.data.results
+        console.log(this.store.trendingtvs, '---Trendingtvs')
+      
+      });
+    },
     searchInArrays(){
+      this.store.landing = false
       this.store.initialDisp = true;
       if(this.store.inputText !== ''){
         this.store.options.params.query = this.store.inputText
@@ -47,7 +62,8 @@ export default {
     }
   },
   created() {
-      
+    this.getTrendingMovies(),
+    this.getTrendingTvs()
   }
 }
 </script>

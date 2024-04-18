@@ -2,7 +2,8 @@
     <main>
         <div class="container">
             <div>
-                <AllCards />
+                <LandingItems v-if="this.store.landing === true"/>
+                <AllCards v-else/>
             </div>
 
         </div>
@@ -12,12 +13,15 @@
 
 <script>
 import AllCards from './AllCards.vue'
+import LandingItems from './LandingItems.vue'
+
 import { store } from '../store.js'
 
 export default {
     name: 'MainComponent',
     components: {
-        AllCards
+        AllCards,
+        LandingItems
     },
     data() {
         return {
