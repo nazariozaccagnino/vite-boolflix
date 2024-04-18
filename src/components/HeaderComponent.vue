@@ -1,7 +1,7 @@
 <template>
     <header class="d-flex justify-content-between align-items-center">
         <div>
-            <img src="/images/Logonetflix.png" alt="netflix" class="logo">
+            <img src="/images/boolflixlogo.png" alt="netflix" class="logo">
         </div>
         <div class="d-flex">
             <input type="text" class="form-control" v-model="store.inputText" @keyup.enter="$emit('startSearch')">

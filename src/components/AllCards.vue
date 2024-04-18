@@ -1,19 +1,22 @@
 <template>
-    
-    <div :class="{'d-none': !store.initialDisp}">
+
+    <div :class="{ 'd-none': !store.initialDisp }">
         <div v-if="this.store.searchResultMovie.length === 0">
+            <h2>Risultati per: {{ this.store.inputText }}</h2>
             <h3>Movies</h3>
             <NoResults />
         </div>
         <div v-else class="row">
+            <h2>Risultati per: {{ this.store.inputText }}</h2>
             <h3>Movies</h3>
-            <div class="col-3 my-2" v-for="(item,index) in this.store.searchResultMovie">
+            <div class="col-3 my-2" v-for="(item, index) in this.store.searchResultMovie">
                 <div class="card">
-                    <img :src="this.store.imageUrl+item.poster_path" class="card-img-top" :alt="item.title">
+                    <img :src="this.store.imageUrl + item.poster_path" class="card-img-top" :alt="item.title">
                     <div class="card-body">
                         <h5 class="card-title">{{ item.title }}</h5>
                         <p class="card-text">{{ item.original_title }}</p>
-                        <p class="flag"><img :src="store.flagApi+item.original_language+'.png'" :alt="item.original_language"></p>
+                        <p class="flag"><img :src="store.flagApi + item.original_language + '.png'"
+                                :alt="item.original_language"></p>
                         <p class="card-text">{{ item.vote_average }}</p>
                     </div>
                 </div>
@@ -25,14 +28,21 @@
         </div>
         <div class="row" v-else>
             <h3>Series</h3>
-            <div class="col-3 my-2" v-for="(item,index) in this.store.searchResultTv">
-                <div class="card">
-                    <img :src="this.store.imageUrl+item.poster_path" class="card-img-top" :alt="item.name">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ item.name }}</h5>
-                        <p class="card-text">{{ item.original_name }}</p>
-                        <p class="flag"><img :src="store.flagApi+item.original_language+'.png'" :alt="item.original_language"></p>
-                        <p class="card-text">{{item.vote_average}}</p>
+            <div class="col-3 my-2" v-for="(item, index) in this.store.searchResultTv">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img :src="this.store.imageUrl + item.poster_path" class="card-img-top" :alt="item.name">
+                        </div>
+                        <div class="card flip-card-back">
+                           
+                                <h5 class="card-title">{{ item.name }}</h5>
+                                <p class="card-text">{{ item.original_name }}</p>
+                                <p class="flag"><img :src="store.flagApi + item.original_language + '.png'"
+                                        :alt="item.original_language"></p>
+                                <p class="card-text">{{ item.vote_average }}</p>
+                            
+                        </div>
                     </div>
                 </div>
             </div>
@@ -46,7 +56,7 @@ import NoResults from './NoResults.vue'
 
 export default {
     name: 'AllCards',
-    components:{
+    components: {
         NoResults
     },
     data() {
@@ -54,14 +64,15 @@ export default {
             store,
         }
     },
-    methods:{
-        convertRate(){
-            // this.store.vote = parseInt((this.store.searchResultMovie.vote_average) / 2),
-            // console.log(item.name);
-        }
+    computed: {
+        // convertRate(){
+        //     return Math.ceil(this.item.vote_average * 10) / 10;
+        // }
+
     },
-    created(){
-        this.convertRate()
+    created() {
+        // this.convertRate()
+        // console.log(this.item.name);
     }
 }
 </script>
@@ -70,12 +81,41 @@ export default {
 .card {
     padding: 5px;
     height: 100%;
-    img{
+
+    img {
         height: 100%;
     }
-    .flag img{
+
+    .flag img {
         border: 1px solid black;
         width: 30px;
     }
+}
+
+.flip-card {
+    background-color: transparent;
+    perspective: 1000px;
+    /* Remove this if you don't want the 3D effect */
+}
+
+.flip-card-inner {
+    position: relative;
+    // width: 100%;
+    // height: 100%;
+    //   text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    // width: 100%;
+    // height: 100%;
+    backface-visibility: hidden;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
 }
 </style>
