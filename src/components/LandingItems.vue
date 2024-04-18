@@ -1,8 +1,8 @@
 <template>
     <div class="py-2">
         <h3>Trending Movies</h3>
-        <div class="row">
-            <div class="my-2 col-3" v-for="(item, index) in this.store.trendingmovies">
+        <div class="d-flex naz-scroll">
+            <div class="my-2 colum" v-for="(item, index) in this.store.trendingmovies">
                 <div class="flip-card" >
                     <div class="flip-card-inner">
                         <div class="card flip-card-front">
@@ -25,8 +25,8 @@
     </div>
     <div class="py-2">
         <h3>Trending Series</h3>
-        <div class="row">
-            <div class="my-2 col-3" v-for="(item, index) in this.store.trendingtvs">
+        <div class="d-flex naz-scroll">
+            <div class="my-2 colum" v-for="(item, index) in this.store.trendingtvs">
                 <div class="flip-card" >
                     <div class="flip-card-inner">
                         <div class="card flip-card-front">
@@ -135,5 +135,12 @@ export default {
 
 ::-webkit-scrollbar-thumb {
     background: #f1f1f183
+}
+.colum{
+    width: 200px;
+    flex-shrink: 0;
+}
+.naz-scroll{
+    overflow-x: scroll;
 }
 </style>
