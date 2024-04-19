@@ -1,6 +1,6 @@
 <template>
-    <div class="py-2">
-        <h3>Trending Movies</h3>
+    <div class="trending">
+        <h3 class="text-white">Trending Movies</h3>
         <div class="d-flex naz-scroll">
             <div class="my-2 colum" v-for="(item, index) in this.store.trendingmovies">
                 <div class="flip-card" >
@@ -24,7 +24,7 @@
         </div>
     </div>
     <div class="py-2">
-        <h3>Trending Series</h3>
+        <h3 class="text-white">Trending Series</h3>
         <div class="d-flex naz-scroll">
             <div class="my-2 colum" v-for="(item, index) in this.store.trendingtvs">
                 <div class="flip-card" >
@@ -142,5 +142,8 @@ export default {
 }
 .naz-scroll{
     overflow-x: scroll;
+}
+.trending{
+    padding-top: 26rem;
 }
 </style>
