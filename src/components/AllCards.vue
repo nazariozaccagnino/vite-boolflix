@@ -22,7 +22,7 @@
                                 <p class="card-text">{{ item.original_title }}</p>
                                 <p class="flag"><img :src="store.flagApi + item.original_language + '.png'"
                                         :alt="item.original_language"></p>
-                                <p class="card-text">{{ item.vote_average }}</p>
+                                <p class="stars"><img :src="`/images/stars/${item.vote_average}.png`" alt=""></p>
                                 <p class="text-center">Overview</p>
                                 <p class="card-text overview">{{ item.overview }}</p>
                             </div>
@@ -49,7 +49,7 @@
                                 <p class="card-text">{{ item.original_name }}</p>
                                 <p class="flag"><img :src="store.flagApi + item.original_language + '.png'"
                                         :alt="item.original_language"></p>
-                                <p class="card-text">{{ item.vote_average }}</p>
+                                        <p class="stars"><img :src="`/images/stars/${item.vote_average}.png`" alt=""></p>
                                 <p class="text-center">Overview</p>
                                 <p class="card-text overview">{{ item.overview }}</p>
                             </div>
@@ -160,5 +160,8 @@ export default {
 
 .results {
     padding-top: 26rem;
+}
+.stars img{
+    width: 60%;
 }
 </style>

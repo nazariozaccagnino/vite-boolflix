@@ -68,7 +68,12 @@ export default {
             el.vote_average = Math.ceil(el.vote_average / 2)
             console.log(el.vote_average)
           }
-
+        }),
+        this.store.searchResultTv.forEach((el) => {
+          if (el.length != 0) {
+            el.vote_average = Math.ceil(el.vote_average / 2)
+            console.log(el.vote_average)
+          }
         })
       }, 1000);
 
