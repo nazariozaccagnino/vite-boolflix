@@ -60,6 +60,9 @@ export default {
             store
         }
     },
+    updated(){
+        // console.log(this.store.trendingmovies);
+    }
 }
 </script>
 

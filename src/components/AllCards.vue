@@ -36,7 +36,7 @@
             </div>
             <div class="row" v-else>
                 <h3>Series</h3>
-                <div class="col-3 my-2" v-for="(item, index) in this.store.searchResultTv" >
+                <div class="col-3 my-2" v-for="(item, index) in this.store.searchResultTv">
                     <div class="flip-card">
                         <div class="flip-card-inner">
                             <div class="card flip-card-front">
@@ -49,7 +49,7 @@
                                 <p class="card-text">{{ item.original_name }}</p>
                                 <p class="flag"><img :src="store.flagApi + item.original_language + '.png'"
                                         :alt="item.original_language"></p>
-                                <p class="card-text">{{ item.vite_average }}</p>
+                                <p class="card-text">{{ item.vote_average }}</p>
                                 <p class="text-center">Overview</p>
                                 <p class="card-text overview">{{ item.overview }}</p>
                             </div>
@@ -67,24 +67,21 @@ import NoResults from './NoResults.vue'
 
 export default {
     name: 'AllCards',
-    rating: this.item.vite_average,
     components: {
         NoResults
     },
     data() {
         return {
             store,
+
         }
     },
-    computed: {
-        //     convertRate(){
-        //         return Math.ceil(this.store.trendingmovies.vote_average * 10) / 10;
-        //}
+    methods: {
+        
     },
     created() {
         // this.convertRate()
-        
-    }
+    },
 }
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-  <HeaderComponent @startSearch="searchInArrays"/>
+  <HeaderComponent @startSearch="searchInArrays" />
   <MainComponent />
 </template>
 
@@ -37,29 +37,42 @@ export default {
 
       })
     },
-    getTrendingMovies(){
+    getTrendingMovies() {
       axios.get(this.store.apiUrl + this.store.endpoint.trendingmovies, this.store.options).then((res) => {
         this.store.trendingmovies = res.data.results
         console.log(this.store.trendingmovies, '---Trendingmovies');
 
-    })
+      })
     },
-    getTrendingTvs(){
+    getTrendingTvs() {
       axios.get(this.store.apiUrl + this.store.endpoint.trendingtvs, this.store.options).then((res) => {
         this.store.trendingtvs = res.data.results
         console.log(this.store.trendingtvs, '---Trendingtvs')
-      
+
       });
     },
-    searchInArrays(){
+    searchInArrays() {
       this.store.landing = false
       this.store.initialDisp = true;
-      if(this.store.inputText !== ''){
+      if (this.store.inputText !== '') {
         this.store.options.params.query = this.store.inputText
       }
       this.getMovies(),
-      this.getTvSeries()
-    }
+        this.getTvSeries(),
+        this.convertRate()
+    },
+    convertRate() {
+      setTimeout(() => {
+        this.store.searchResultMovie.forEach((el) => {
+          if (el.length != 0) {
+            el.vote_average = Math.ceil(el.vote_average / 2)
+            console.log(el.vote_average)
+          }
+
+        })
+      }, 1000);
+
+    },
   },
   created() {
     this.getTrendingMovies(),
