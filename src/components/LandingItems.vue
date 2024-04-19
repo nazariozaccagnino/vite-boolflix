@@ -3,7 +3,7 @@
         <h3 class="text-white">Trending Movies</h3>
         <div class="d-flex naz-scroll">
             <div class="my-2 colum" v-for="(item, index) in this.store.trendingmovies">
-                <div class="flip-card" >
+                <div class="flip-card">
                     <div class="flip-card-inner">
                         <div class="card flip-card-front">
                             <img :src="this.store.imageUrl + item.poster_path" class="card-img-top" :alt="item.title">
@@ -14,7 +14,7 @@
                             <p class="card-text">{{ item.original_title }}</p>
                             <p class="flag"><img :src="store.flagApi + item.original_language + '.png'"
                                     :alt="item.original_language"></p>
-                            <p class="card-text">{{ item.vote_average }}</p>
+                                    <p class="stars"><img :src="`/images/stars/${item.vote_average}.png`" alt=""></p>
                             <p class="text-center">Overview</p>
                             <p class="card-text overview">{{ item.overview }}</p>
                         </div>
@@ -27,7 +27,7 @@
         <h3 class="text-white">Trending Series</h3>
         <div class="d-flex naz-scroll">
             <div class="my-2 colum" v-for="(item, index) in this.store.trendingtvs">
-                <div class="flip-card" >
+                <div class="flip-card">
                     <div class="flip-card-inner">
                         <div class="card flip-card-front">
                             <img :src="this.store.imageUrl + item.poster_path" class="card-img-top" :alt="item.title">
@@ -38,7 +38,7 @@
                             <p class="card-text">{{ item.original_name }}</p>
                             <p class="flag"><img :src="store.flagApi + item.original_language + '.png'"
                                     :alt="item.original_language"></p>
-                            <p class="card-text">{{ item.vote_average }}</p>
+                                    <p class="stars"><img :src="`/images/stars/${item.vote_average}.png`" alt=""></p>
                             <p class="text-center">Overview</p>
                             <p class="card-text overview">{{ item.overview }}</p>
                         </div>
@@ -60,8 +60,27 @@ export default {
             store
         }
     },
-    updated(){
-        // console.log(this.store.trendingmovies);
+    methods: {
+        convertRate() {
+            setTimeout(() => {
+                this.store.trendingmovies.forEach((el) => {
+                    if (el.length != 0) {
+                        el.vote_average = Math.ceil(el.vote_average / 2)
+                        console.log(el.vote_average)
+                    }
+                }),
+                  this.store.trendingtvs.forEach((el) => {
+                        if (el.length != 0) {
+                            el.vote_average = Math.ceil(el.vote_average / 2)
+                            console.log(el.vote_average)
+                        }
+                    })  
+            }, 500);
+
+        },
+    },
+    mounted() {
+        this.convertRate()
     }
 }
 </script>
@@ -139,14 +158,17 @@ export default {
 ::-webkit-scrollbar-thumb {
     background: #f1f1f183
 }
-.colum{
+
+.colum {
     width: 200px;
     flex-shrink: 0;
 }
-.naz-scroll{
+
+.naz-scroll {
     overflow-x: scroll;
 }
-.trending{
+
+.trending {
     padding-top: 26rem;
 }
 </style>

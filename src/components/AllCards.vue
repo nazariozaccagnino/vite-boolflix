@@ -161,7 +161,5 @@ export default {
 .results {
     padding-top: 26rem;
 }
-.stars img{
-    width: 60%;
-}
+
 </style>
