@@ -10,7 +10,7 @@
                 <h2>Risultati per: {{ this.store.inputText }}</h2>
                 <h3>Movies</h3>
                 <div class="col-3 my-2" v-for="(item, index) in this.store.searchResultMovie">
-                    <div class="flip-card">
+                    <div class="flip-card" @mouseover="upHere = item.id" @mouseleave="upHere = ''">
                         <div class="flip-card-inner">
                             <div class="card flip-card-front">
                                 <img :src="this.store.imageUrl + item.poster_path" class="card-img-top"
@@ -73,14 +73,22 @@ export default {
     data() {
         return {
             store,
+            upHere: '',
 
         }
     },
     methods: {
-        
+        getTrailerId(){
+            setInterval(() => {
+            this.store.trailerid = this.upHere
+            console.log(this.store.trailerid)
+        }, 2000);
+            
+        }
     },
     created() {
         // this.convertRate()
+        this.getTrailerId()
     },
 }
 </script>

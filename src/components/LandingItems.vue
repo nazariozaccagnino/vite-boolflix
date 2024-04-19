@@ -66,13 +66,13 @@ export default {
                 this.store.trendingmovies.forEach((el) => {
                     if (el.length != 0) {
                         el.vote_average = Math.ceil(el.vote_average / 2)
-                        console.log(el.vote_average)
+                        
                     }
                 }),
                   this.store.trendingtvs.forEach((el) => {
                         if (el.length != 0) {
                             el.vote_average = Math.ceil(el.vote_average / 2)
-                            console.log(el.vote_average)
+                            
                         }
                     })  
             }, 500);

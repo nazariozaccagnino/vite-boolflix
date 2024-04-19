@@ -22,6 +22,6 @@ export const store = reactive({
     initialDisp: false,
     flagApi: '/images/flags/',
     vote: '',
-    landing:true
-
+    landing:true,
+    trailerid: null,
 });

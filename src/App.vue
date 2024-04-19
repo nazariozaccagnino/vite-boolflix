@@ -60,28 +60,39 @@ export default {
       this.getMovies(),
         this.getTvSeries(),
         this.convertRate()
+        // this.getMovieid()
     },
     convertRate() {
       setTimeout(() => {
         this.store.searchResultMovie.forEach((el) => {
           if (el.length != 0) {
             el.vote_average = Math.ceil(el.vote_average / 2)
-            console.log(el.vote_average)
           }
         }),
-        this.store.searchResultTv.forEach((el) => {
-          if (el.length != 0) {
-            el.vote_average = Math.ceil(el.vote_average / 2)
-            console.log(el.vote_average)
-          }
-        })
+          this.store.searchResultTv.forEach((el) => {
+            if (el.length != 0) {
+              el.vote_average = Math.ceil(el.vote_average / 2)
+            }
+          })
       }, 1000);
 
     },
+    // getMovieid() {
+    //   setTimeout(() => {
+    //     this.store.searchResultMovie.forEach((el) => {
+    //       if (el.length != 0) {
+    //         this.store.trailerid = el.id
+    //       }
+    //       console.log(this.store.trailerid, 'booo')
+    //     })
+    //   }, 1000);
+
+    // }
   },
   created() {
     this.getTrendingMovies(),
     this.getTrendingTvs()
+    
   }
 }
 </script>
